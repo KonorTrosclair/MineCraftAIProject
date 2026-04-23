@@ -1,0 +1,17 @@
+# Model Checkpoints
+*.pt
+checkpoints/
+
+# Training Videos
+*.mp4
+output/
+best_output/
+
+# Logs and Python temp files
+*.log
+__pycache__/
+.env
+
+#shell files
+*.sh
+*.sh.1

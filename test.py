@@ -1,15 +1,18 @@
-from minestudio.data import RawDataset
-from minestudio.data.minecraft.callbacks import ImageKernelCallback, ActionKernelCallback
+import minestudio
+from minestudio.simulator import MinecraftSim
 
-dataset = RawDataset(
-    dataset_dirs=['6xx'],  # Free Gameplay dataset
-    modal_kernel_callbacks=[
-        ImageKernelCallback(frame_width=224, frame_height=224, enable_video_aug=False),
-        ActionKernelCallback(enable_prev_action=True, win_bias=1, read_bias=-1),
-    ],
-    win_len=128,
-    split_ratio=0.9,
-    shuffle_episodes=True,
-)
+# Create a dummy sim
+sim = MinecraftSim(action_type="env")
 
-print("Dataset loaded, first item keys:", dataset[0].keys())
+# 1. See EVERY method available on the sim object
+print("--- ALL METHODS ---")
+print(dir(sim))
+
+# 2. See methods of the underlying environment (where most commands live)
+print("\n--- UNDERLYING ENV METHODS ---")
+if hasattr(sim, 'env'):
+    print(dir(sim.env))
+
+# 3. See the 'unwrapped' core (the rawest form of the simulator)
+print("\n--- UNWRAPPED CORE METHODS ---")
+print(dir(sim.unwrapped))
