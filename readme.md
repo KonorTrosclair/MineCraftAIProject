@@ -7,6 +7,8 @@ Geting Started:
 
     Clone the Repository:
         git clone https://github.com/KonorTrosclair/MineCraftAIProject
+        cd MineCraftAIProject
+        
     You will need Python version 3.10
     Install wsl Ubuntu (if on windows system):
         wsl --install (will require restart of PC)
