@@ -4,11 +4,9 @@ os.environ["PYTORCH_CUDA_ALLOC_CONF"] = "expandable_segments:True"
 
 
 import torch
-import torch.nn.functional as F
-from minestudio.models.vpt import body
 
 
-import numpy as np
+
 from torch.distributions import Categorical
 from minestudio.simulator import MinecraftSim
 from minestudio.simulator.callbacks import HardResetCallback, CommandsCallback, RecordCallback
@@ -50,11 +48,7 @@ print(f"Loaded checkpoint, best reward: {best_reward:.2f}")
 policy.train()
 
 
-# fake_obs = {"image": np.zeros((128, 128, 3), dtype=np.uint8)}
-# input_batched = dict_map(policy._batchify, fake_obs)
-# print("Testing patched forward...")
-# latents, state_out = policy.forward(input_batched, None)
-# print("Patch working! keys:", latents['pi_logits'].keys())
+
 
 optimizer = torch.optim.Adam(policy.parameters(), lr=LEARNING_RATE)
 
